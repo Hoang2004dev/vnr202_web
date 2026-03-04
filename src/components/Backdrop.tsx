@@ -1,3 +1,4 @@
+// src\components\Backdrop.tsx
 import Ornaments from "./Ornaments"
 
 export default function Backdrop() {

@@ -1,3 +1,4 @@
+// Hero.tsx
 import { motion } from "framer-motion"
 import Reveal from "./Reveal"
 

@@ -1,3 +1,4 @@
+// App.tsx
 import Backdrop from "./components/Backdrop"
 import Navbar from "./components/Navbar"
 import Hero from "./components/Hero"

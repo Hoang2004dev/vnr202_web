@@ -1,3 +1,4 @@
+// src\components\Ornaments.tsx
 export default function Ornaments() {
   const ink = "rgba(var(--inkRgb),0.38)"
   const inkLight = "rgba(var(--inkRgb),0.18)"

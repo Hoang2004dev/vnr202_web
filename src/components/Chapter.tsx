@@ -1,3 +1,4 @@
+// Chapter.tsx
 import Reveal from "./Reveal"
 import FeatureCard from "./FeatureCard"
 
@@ -44,7 +45,7 @@ export default function Chapter({
               </Reveal>
 
               <Reveal delay={0.18}>
-                <div className="mt-6 rounded-2xl border border-black/10 bg-black/[0.03] p-5">
+                <div className="mt-6 rounded-2xl border border-black/20 bg-white/60 p-5 shadow-sm">
                   <p className="caps text-[10px] text-[color:var(--muted2)]">LUẬN ĐIỂM</p>
                   <p className="mt-2 text-sm leading-relaxed text-[color:var(--text)]">
                     “{thesis}”

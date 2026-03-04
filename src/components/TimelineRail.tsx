@@ -1,3 +1,4 @@
+// src\components\TimelineRail.tsx
 import { motion, useScroll } from "framer-motion"
 
 const steps = [

@@ -1,3 +1,4 @@
+// Navbar.tsx
 import { motion, useScroll } from "framer-motion"
 
 type NavItem = { id: string; label: string }
@@ -20,7 +21,7 @@ export default function Navbar({ activeId }: { activeId: string }) {
         className="origin-left h-[3px] w-full bg-gradient-to-r from-[var(--amber)] via-[var(--sky)] to-[var(--mint)]"
       />
       <div className="mx-auto max-w-6xl px-4 pt-3">
-        <div className="glass rounded-2xl backdrop-blur-xl">
+        <div className="glass rounded-2xl backdrop-blur-xl shadow-xl">
           <div className="flex items-center justify-between px-4 py-3">
             <a href="#top" className="group flex items-baseline gap-3">
               <span className="caps text-sm text-[var(--amber)]">BIÊN NIÊN</span>

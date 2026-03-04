@@ -1,3 +1,4 @@
+// src\components\Reveal.tsx
 import { motion } from "framer-motion"
 
 export default function Reveal({

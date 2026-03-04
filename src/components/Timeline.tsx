@@ -1,3 +1,4 @@
+// src\components\Timeline.tsx
 type Step = { id: string; year: string; title: string; desc: string }
 
 const steps: Step[] = [

@@ -1,3 +1,4 @@
+// Footer.tsx
 import Reveal from "./Reveal"
 
 export default function Footer() {
