@@ -1,3 +1,4 @@
+// Section1945.tsx
 import Card from "../components/Card"
 
 function Section1945() {
