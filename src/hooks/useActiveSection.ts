@@ -4,31 +4,31 @@ export function useActiveSection(sectionIds: string[]) {
   const [activeId, setActiveId] = useState(sectionIds[0] ?? "")
 
   useEffect(() => {
-    const els = sectionIds
-      .map((id) => document.getElementById(id))
-      .filter(Boolean) as HTMLElement[]
+    const handleScroll = () => {
+      const middle = window.innerHeight / 2
 
-    if (!els.length) return
+      let current = sectionIds[0]
 
-    const io = new IntersectionObserver(
-      (entries) => {
-        // chọn entry đang “ở giữa màn hình” nhất
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => (b.intersectionRatio ?? 0) - (a.intersectionRatio ?? 0))[0]
-        if (visible?.target?.id) setActiveId(visible.target.id)
-      },
-      {
-        root: null,
-        threshold: [0.2, 0.35, 0.5, 0.65],
-        // ưu tiên phần giữa viewport
-        rootMargin: "-35% 0px -50% 0px",
+      for (const id of sectionIds) {
+        const el = document.getElementById(id)
+        if (!el) continue
+
+        const rect = el.getBoundingClientRect()
+
+        if (rect.top <= middle && rect.bottom >= middle) {
+          current = id
+          break
+        }
       }
-    )
 
-    els.forEach((el) => io.observe(el))
-    return () => io.disconnect()
-  }, [sectionIds.join("|")])
+      setActiveId(current)
+    }
+
+    window.addEventListener("scroll", handleScroll)
+    handleScroll()
+
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [sectionIds])
 
   return activeId
 }
