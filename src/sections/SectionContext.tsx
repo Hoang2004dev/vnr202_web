@@ -54,10 +54,13 @@ export default function SectionContext() {
 
         {/* ── Stat strip ── */}
         <Reveal delay={0.05}>
-          <div
-            className="mb-10 grid grid-cols-2 md:grid-cols-4 divide-x overflow-hidden rounded-2xl"
-            style={{ border: `1px solid rgba(${RED_RGB},0.18)`, background: `rgba(${RED_RGB},0.04)`, divideColor: `rgba(${RED_RGB},0.12)` }}
-          >
+            <div
+            className="mb-10 grid grid-cols-2 md:grid-cols-4 overflow-hidden rounded-2xl"
+            style={{
+                border: `1px solid rgba(${RED_RGB},0.18)`,
+                background: `rgba(${RED_RGB},0.04)`
+            }}
+            >
             {[
               { v: "2/9/1945", l: "Ngày tuyên bố Độc lập" },
               { v: "2 triệu", l: "Người chết vì nạn đói" },

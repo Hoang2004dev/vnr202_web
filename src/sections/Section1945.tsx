@@ -2,7 +2,6 @@
 // Layout: Documentary / Story — text và info-blocks xen kẽ theo chiều dọc
 // Cảm giác: đọc một bài phóng sự lịch sử sâu sắc
 
-import { motion } from "framer-motion"
 import Reveal from "../components/Reveal"
 
 const RED = "#c0132a"

@@ -2,7 +2,6 @@
 // Phần II: Chủ trương hòa hoãn – nhân nhượng của Việt Nam
 // Layout: Split-panel — trái: chủ trương + nguyên tắc; phải: timeline nhượng bộ
 
-import { motion } from "framer-motion"
 import Reveal from "../components/Reveal"
 
 const AMBER = "#b56a00"
