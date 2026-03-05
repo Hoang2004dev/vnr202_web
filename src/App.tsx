@@ -3,21 +3,19 @@ import Backdrop from "./components/Backdrop"
 import Navbar from "./components/Navbar"
 import Hero from "./components/Hero"
 import TimelineRail from "./components/TimelineRail"
-import Reveal from "./components/Reveal"
 import Footer from "./components/Footer"
 import { useActiveSection } from "./hooks/useActiveSection"
-
 import BlockQuote from "./components/BlockQuote"
 import HistoricalImage from "./components/HistoricalImage"
 import Gallery from "./components/Gallery"
 
-// 3 section components — each has a distinct layout
-import Section1945 from "./sections/Section1945"   // Story / documentary
-import Section1946 from "./sections/Section1946"   // Timeline
-import Section1951 from "./sections/Section1951"   // Hero battle / climax
+import SectionContext      from "./sections/SectionContext"       // I:  Bối cảnh 1945
+import SectionNegotiation  from "./sections/SectionNegotiation"   // II: Hòa hoãn – nhân nhượng
+import SectionFrenchAggression from "./sections/SectionFrenchAggression" // III: Leo thang của Pháp
+import SectionConclusion   from "./sections/SectionConclusion"    // IV: Chiến tranh không thể tránh
 
 export default function App() {
-  const sectionIds = ["c1945", "c1946", "c1951", "logic"]
+  const sectionIds = ["context", "negotiation", "aggression", "conclusion"]
   const activeId = useActiveSection(sectionIds)
 
   return (
@@ -29,16 +27,16 @@ export default function App() {
       {/* ── HERO ── */}
       <Hero />
 
-      {/* ── Opening image ── */}
+      {/* ── Ảnh Tuyên ngôn Độc lập ── */}
       <HistoricalImage
         src="/images/tuyen-ngon-doc-lap.jpg"
         caption="Chủ tịch Hồ Chí Minh đọc Tuyên ngôn Độc lập tại Quảng trường Ba Đình, ngày 2/9/1945."
       />
 
-      {/* ════════════════════════════════════════════
-          CHƯƠNG 1: Story / documentary layout
-          ════════════════════════════════════════════ */}
-      <Section1945 />
+      {/* ════════════════════════════════
+          PHẦN I: Bối cảnh 1945
+          ════════════════════════════════ */}
+      <SectionContext />
 
       <Gallery
         images={[
@@ -48,54 +46,33 @@ export default function App() {
         ]}
       />
 
+      {/* ════════════════════════════════
+          PHẦN II: Hòa hoãn – nhân nhượng
+          ════════════════════════════════ */}
+      <SectionNegotiation />
+
       <BlockQuote
-        quote="Chúng ta thà hy sinh tất cả, chứ nhất định không chịu mất nước, không chịu làm nô lệ."
-        author="Hồ Chí Minh – Lời kêu gọi Toàn quốc kháng chiến (19/12/1946)"
+        quote="Dĩ bất biến, ứng vạn biến — giữ vững độc lập dân tộc, linh hoạt về sách lược."
+        author="Hồ Chí Minh — Nguyên tắc chỉ đạo ngoại giao 1945–1946"
       />
 
-      {/* ════════════════════════════════════════════
-          CHƯƠNG 2: Timeline layout
-          ════════════════════════════════════════════ */}
-      <Section1946 />
+      {/* ════════════════════════════════
+          PHẦN III: Dã tâm leo thang của Pháp
+          ════════════════════════════════ */}
+      <SectionFrenchAggression />
 
       <Gallery
         images={[
-          { src: "/images/ha-noi-1946.jpg",          caption: "Chiến đấu tại Hà Nội 1946" },
-          { src: "/images/viet-bac-1947.jpg",         caption: "Chiến thắng Việt Bắc Thu Đông 1947" },
-          { src: "/images/chien-dich-bien-gioi.jpg",  caption: "Chiến dịch Biên giới 1950" },
+          { src: "/images/nam-bo-khang-chien.jpg", caption: "Nam Bộ kháng chiến từ 23/9/1945" },
+          { src: "/images/hai-phong-1946.jpg",     caption: "Pháp tấn công Hải Phòng tháng 11/1946" },
+          { src: "/images/ha-noi-1946.jpg",        caption: "Khiêu khích quân sự tại Hà Nội cuối 1946" },
         ]}
       />
 
-      {/* ════════════════════════════════════════════
-          CHƯƠNG 3: Hero battle / climax layout
-          ════════════════════════════════════════════ */}
-      <Section1951 />
-
-      <Gallery
-        images={[
-          { src: "/images/dien-bien-phu.jpg",  caption: "Chiến dịch Điện Biên Phủ 1954" },
-          { src: "/images/vo-nguyen-giap.jpg", caption: "Đại tướng Võ Nguyên Giáp chỉ huy chiến dịch" },
-          { src: "/images/geneva-1954.jpg",    caption: "Hội nghị Giơnevơ 1954" },
-        ]}
-      />
-
-      {/* ════════════════════════════════════════════
-          LOGIC CHIẾN LƯỢC
-          ════════════════════════════════════════════ */}
-      <section id="logic" className="scroll-mt-28 py-20">
-        <div className="mx-auto max-w-6xl px-4">
-          <Reveal>
-            <div className="rounded-3xl border p-10 text-center">
-              <h2 className="text-4xl font-bold mb-6">Logic chiến lược toàn chương</h2>
-              <p className="text-lg text-[color:var(--muted)]">
-                1945–46: giữ chính quyền •
-                1946–50: chiến tranh nhân dân •
-                1951–54: quyết chiến chiến lược.
-              </p>
-            </div>
-          </Reveal>
-        </div>
-      </section>
+      {/* ════════════════════════════════
+          PHẦN IV: Kết luận
+          ════════════════════════════════ */}
+      <SectionConclusion />
 
       <Footer />
     </div>
