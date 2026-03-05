@@ -1,13 +1,20 @@
 // App.tsx
-// App.tsx — updated for light parchment theme
 import Backdrop from "./components/Backdrop"
 import Navbar from "./components/Navbar"
 import Hero from "./components/Hero"
 import TimelineRail from "./components/TimelineRail"
-import Chapter from "./components/Chapter"
 import Reveal from "./components/Reveal"
 import Footer from "./components/Footer"
 import { useActiveSection } from "./hooks/useActiveSection"
+
+import BlockQuote from "./components/BlockQuote"
+import HistoricalImage from "./components/HistoricalImage"
+import Gallery from "./components/Gallery"
+
+// 3 section components — each has a distinct layout
+import Section1945 from "./sections/Section1945"   // Story / documentary
+import Section1946 from "./sections/Section1946"   // Timeline
+import Section1951 from "./sections/Section1951"   // Hero battle / climax
 
 export default function App() {
   const sectionIds = ["c1945", "c1946", "c1951", "logic"]
@@ -18,85 +25,73 @@ export default function App() {
       <Backdrop />
       <Navbar activeId={activeId} />
       <TimelineRail activeId={activeId} />
+
+      {/* ── HERO ── */}
       <Hero />
 
-      <Chapter id="c1945" kicker="CHƯƠNG 1 • 1945–1946"
-        title="Giữ chính quyền trong thế hiểm nghèo"
-        subtitle="Nhân nhượng có nguyên tắc để củng cố lực lượng; kiên định mục tiêu độc lập."
-        thesis="Nhân nhượng là chiến thuật — độc lập dân tộc là nguyên tắc."
-        cards={[
-          { tag: "Bối cảnh",  title: "Ngàn cân treo sợi tóc",       body: <ul className="list-disc pl-5 space-y-1"><li>Nạn đói 1945, hơn 2 triệu người chết</li><li>95% mù chữ, ngân khố trống rỗng</li><li>Tưởng – Anh/Pháp – Nhật chưa giải giáp</li></ul> },
-          { tag: "Kiến thiết", title: "Ba nhiệm vụ cấp bách",          body: <ul className="list-disc pl-5 space-y-1"><li>Diệt giặc đói</li><li>Diệt giặc dốt</li><li>Diệt giặc ngoại xâm</li></ul> },
-          { tag: "Chính danh", title: "Tổng tuyển cử 6/1/1946",        body: <p>Củng cố tính hợp pháp: Quốc hội khóa I và Hiến pháp 1946 — nền tảng dân chủ của Nhà nước mới.</p> },
-          { tag: "Đối ngoại",  title: "Dĩ bất biến, ứng vạn biến",    body: <p>Kéo dài thời gian, đẩy quân Tưởng về nước, chuẩn bị kháng chiến — nhưng không đánh đổi chủ quyền.</p> },
+      {/* ── Opening image ── */}
+      <HistoricalImage
+        src="/images/tuyen-ngon-doc-lap.jpg"
+        caption="Chủ tịch Hồ Chí Minh đọc Tuyên ngôn Độc lập tại Quảng trường Ba Đình, ngày 2/9/1945."
+      />
+
+      {/* ════════════════════════════════════════════
+          CHƯƠNG 1: Story / documentary layout
+          ════════════════════════════════════════════ */}
+      <Section1945 />
+
+      <Gallery
+        images={[
+          { src: "/images/nan-doi-1945.jpg",       caption: "Nạn đói năm 1945 khiến hơn 2 triệu người chết" },
+          { src: "/images/binh-dan-hoc-vu.jpg",    caption: "Phong trào Bình dân học vụ" },
+          { src: "/images/tong-tuyen-cu-1946.jpg", caption: "Cuộc Tổng tuyển cử đầu tiên năm 1946" },
         ]}
       />
 
-      <div className="mx-auto max-w-6xl px-4 py-2"><div className="rainbow-divider" /></div>
+      <BlockQuote
+        quote="Chúng ta thà hy sinh tất cả, chứ nhất định không chịu mất nước, không chịu làm nô lệ."
+        author="Hồ Chí Minh – Lời kêu gọi Toàn quốc kháng chiến (19/12/1946)"
+      />
 
-      <Chapter id="c1946" kicker="CHƯƠNG 2 • 1946–1950"
-        title="Chiến tranh nhân dân: từ yếu thành mạnh"
-        subtitle="Lấy thời gian làm lợi thế; lấy nhân dân làm nền tảng; tránh đánh nhanh thắng nhanh."
-        thesis="Toàn dân – toàn diện – lâu dài – dựa vào sức mình."
-        cards={[
-          { tag: "Khởi điểm",  title: "Toàn quốc kháng chiến 19/12/1946", body: <p>Khi Pháp quyết tâm tái chiếm bằng vũ lực, chiến tranh trở thành lựa chọn bắt buộc để giữ độc lập.</p> },
-          { tag: "Biểu tượng", title: "60 ngày đêm Hà Nội",              body: <p>Mục tiêu: giam chân địch, bảo vệ Trung ương rút lên căn cứ — "Quyết tử cho Tổ quốc quyết sinh".</p> },
-          { tag: "Đường lối",  title: "4 trụ cột chiến lược",             body: <ul className="list-disc pl-5 space-y-1"><li>Toàn dân</li><li>Toàn diện</li><li>Lâu dài</li><li>Dựa vào sức mình</li></ul> },
-          { tag: "Bước ngoặt", title: "Việt Bắc 1947",                    body: <p>Bẻ gãy "đánh nhanh thắng nhanh", buộc Pháp sa lầy — đây là bước ngoặt chiến lược của toàn cuộc chiến.</p> },
+      {/* ════════════════════════════════════════════
+          CHƯƠNG 2: Timeline layout
+          ════════════════════════════════════════════ */}
+      <Section1946 />
+
+      <Gallery
+        images={[
+          { src: "/images/ha-noi-1946.jpg",          caption: "Chiến đấu tại Hà Nội 1946" },
+          { src: "/images/viet-bac-1947.jpg",         caption: "Chiến thắng Việt Bắc Thu Đông 1947" },
+          { src: "/images/chien-dich-bien-gioi.jpg",  caption: "Chiến dịch Biên giới 1950" },
         ]}
       />
 
-      <div className="mx-auto max-w-6xl px-4 py-2"><div className="rainbow-divider" /></div>
+      {/* ════════════════════════════════════════════
+          CHƯƠNG 3: Hero battle / climax layout
+          ════════════════════════════════════════════ */}
+      <Section1951 />
 
-      <Chapter id="c1951" kicker="CHƯƠNG 3 • 1951–1954"
-        title="Chủ động tiến công – kết thúc chiến tranh"
-        subtitle="Trưởng thành tư duy – tổ chức; kết hợp quân sự–chính trị–ngoại giao để tạo thắng lợi quyết định."
-        thesis="Từ đánh để tồn tại sang đánh để quyết định."
-        cards={[
-          { tag: "Trưởng thành", title: "Đại hội II (1951)",                    body: <p>Định hình tầm nhìn chiến lược và tổ chức lãnh đạo, tạo nền cho các chiến dịch quy mô lớn.</p> },
-          { tag: "Quyết định",   title: "Chọn Điện Biên Phủ",                  body: <p>Đối phương tập trung lực lượng tạo "điểm cứng" — đồng thời tạo cơ hội tiêu diệt lớn trong trận quyết chiến.</p> },
-          { tag: "Đỉnh cao",     title: "56 ngày đêm (13/3 → 7/5/1954)",        body: <p>"Đánh chắc, tiến chắc" — chiến thắng làm sụp đổ kế hoạch Nava và chấn động dư luận thế giới.</p> },
-          { tag: "Cục diện",     title: "Giơnevơ 1954",                         body: <p>Thắng lợi quân sự tạo ưu thế ngoại giao: văn kiện quốc tế quan trọng công nhận quyền dân tộc cơ bản.</p> },
+      <Gallery
+        images={[
+          { src: "/images/dien-bien-phu.jpg",  caption: "Chiến dịch Điện Biên Phủ 1954" },
+          { src: "/images/vo-nguyen-giap.jpg", caption: "Đại tướng Võ Nguyên Giáp chỉ huy chiến dịch" },
+          { src: "/images/geneva-1954.jpg",    caption: "Hội nghị Giơnevơ 1954" },
         ]}
       />
 
-      {/* Logic section */}
+      {/* ════════════════════════════════════════════
+          LOGIC CHIẾN LƯỢC
+          ════════════════════════════════════════════ */}
       <section id="logic" className="scroll-mt-28 py-20">
         <div className="mx-auto max-w-6xl px-4">
           <Reveal>
-            <div className="relative rounded-3xl p-[1.5px] gradient-stroke">
-              <div className="glass rounded-3xl p-8 md:p-10">
-                <h2
-                  className="text-3xl font-semibold md:text-4xl"
-                  style={{
-                    background: "linear-gradient(135deg, #b56a00, #c0132a)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    backgroundClip: "text",
-                  }}
-                >
-                  Logic chiến lược toàn chương
-                </h2>
-                <p className="mt-4 max-w-3xl text-sm leading-relaxed text-[color:var(--muted)] md:text-base">
-                  1945–46: mềm dẻo có nguyên tắc để giữ chính quyền •
-                  1946–50: chiến tranh nhân dân để chuyển hóa thế trận •
-                  1951–54: chủ động tiến công để kết thúc chiến tranh.
-                </p>
-
-                <div className="mt-8 grid gap-4 md:grid-cols-3">
-                  {[
-                    { y: "1945–1946", t: "GIỮ",      c: "Hòa hoãn chiến lược, củng cố chính quyền.", color: "#c0132a", bg: "rgba(192,19,42,0.08)",  border: "rgba(192,19,42,0.22)" },
-                    { y: "1946–1950", t: "CẦM CỰ",   c: "Toàn dân – toàn diện – lâu dài.",           color: "#5b21b6", bg: "rgba(91,33,182,0.07)",  border: "rgba(91,33,182,0.20)" },
-                    { y: "1951–1954", t: "KẾT THÚC", c: "Quyết chiến + ngoại giao.",                 color: "#0c6b5f", bg: "rgba(12,107,95,0.07)",  border: "rgba(12,107,95,0.20)" },
-                  ].map((x) => (
-                    <div key={x.t} className="rounded-2xl p-6" style={{ background: x.bg, border: `1px solid ${x.border}` }}>
-                      <p className="caps text-[10px] text-[color:var(--muted2)]">{x.y}</p>
-                      <p className="mt-1 text-2xl font-bold caps" style={{ color: x.color }}>{x.t}</p>
-                      <p className="mt-2 text-sm text-[color:var(--muted)]">{x.c}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
+            <div className="rounded-3xl border p-10 text-center">
+              <h2 className="text-4xl font-bold mb-6">Logic chiến lược toàn chương</h2>
+              <p className="text-lg text-[color:var(--muted)]">
+                1945–46: giữ chính quyền •
+                1946–50: chiến tranh nhân dân •
+                1951–54: quyết chiến chiến lược.
+              </p>
             </div>
           </Reveal>
         </div>
