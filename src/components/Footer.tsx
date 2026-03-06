@@ -45,7 +45,7 @@ export default function Footer() {
             </div>
 
             <p className="mt-6 text-xs text-[color:var(--muted2)]">
-              Web thuyết trình • React + Tailwind + Motion
+              Nhóm 3
             </p>
 
           </div>
